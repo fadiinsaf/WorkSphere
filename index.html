@@ -15,11 +15,62 @@
 
         <aside class="bg-[#074A82] grid grid-rows-[10em_1fr]">
 
+            <div class="asidecontainer flex flex-col items-center gap-6">
+
+                <div class="unsignedstaff text-3xl font-light text-white mt-5"><h1>Unsigned Staff</h1></div>
+                
+                <div class="addworker-button">
+
+                    <button class="bg-[#ffffff75] text-white p-2 w-[15rem] rounded-4xl relative transition transform hover:scale-105 hover:bg-[#ffffff97]" id="addworker" type="button">
+                        <img class="absolute left-5 bottom-[0.45rem]" src="Assets/icons/Add Administrator.png" width="27" alt="add person logo">
+                        <p>Add New Worker</p>
+                    </button>
+                    
+                </div>
+
+            </div>
+
+            <div class="cards-container flex flex-col items-center">
+                
+                <div class="card1 w-80 h-16 px-2 flex gap-4 items-center rounded-xl bg-[#ffffff26] border-1 border-white">
+
+                    <div id="profile">
+                        <img src="Assets/images/default.png" width="55" alt="profile">
+                    </div>
+
+                    <div class="name&role">
+
+                        <div id="name" class="text-white">
+                            <h2>FADI INSAF</h2>
+                        </div>
+
+                        <div id="role" class="text-[#ffffff]">
+                            <h3>Manager</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
         </aside>
 
         <main class="grid grid-rows-[7.5em_1fr]">
 
             <div class="logo flex justify-center"><img src="Assets/images/logo.png" height="120" width="120" alt="LOGO"></div>
+
+            <div id="flor" class="grid grid-cols-5 grid-rows-3 w-11/12 h-11/12 mx-auto bg-[#EAA64D]">
+
+                <div id="conference-room" class="text-2xl text-center bg-[#D88E32] col-start-1 col-end-3">Conference Room</div>
+                <div id="Reception-room" class="text-2xl text-center bg-[#136EB8] row-start-2 row-end-4 col-start-1 col-end-3">Reception Room</div>
+                <div id="Server-room" class="text-2xl text-center bg-[#2D7BC4] col-start-5 col-end-6 row-start-3 row-end-4">Server Room</div>
+                <div id="Security-room" class="text-2xl text-center bg-[#7C4F1A] col-start-5 col-end-6 row-start-1 row-end-2">Security Room</div>
+                <div id="Staff-room" class="text-2xl text-center bg-[#F7F7F7] col-start-4 col-end-5 row-start-3 row-end-4">Staff Room</div>
+                <div id="Archives-room" class="text-2xl text-center bg-[#B37933] col-start-4 col-end-5 row-start-1 row-end-2">Archives Room</div>
+
+            </div>
             
         </main>
 
