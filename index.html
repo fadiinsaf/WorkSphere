@@ -322,6 +322,44 @@
 
     </div>
 
+    <div id="inject-overlay" class="hidden h-screen w-screen z-100 bg-[rgba(0,0,0,0.8)] fixed flex justify-center items-center top-0 left-0">
+
+        <div id="inject-modal" class="bg-[#074A82] w-104 h-[95%] p-5 overflow-y-scroll no-scrollbar">
+
+            <div class="inject&close-button relative mb-4">
+                <h3 class="text-2xl text-white">Select worker</h3>
+                <i id="close-inject"
+                    class="fa-solid fa-xmark absolute text-white right-0 top-1 cursor-pointer transition hover:scale-95 hover:text-red-500 text-2xl"></i>
+            </div>
+
+            <div class="cards-container flex flex-col  items-center">
+
+                <div class="card1 w-80 h-16 px-2 flex gap-4 items-center rounded-xl bg-[#ffffff1f] border-1 border-white">
+
+                    <div id="profile">
+                        <img src="Assets/images/default.png" width="55" alt="profile">
+                    </div>
+
+                    <div class="name&role">
+
+                        <div id="name" class="text-white">
+                            <h2>FADI INSAF</h2>
+                        </div>
+
+                        <div id="role" class="text-[#ffffff]">
+                            <h3>Manager</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
 
 </html>
