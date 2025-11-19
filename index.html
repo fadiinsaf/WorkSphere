@@ -17,15 +17,21 @@
 
     <div class="main-contaniner h-screen w-full grid grid-cols-[22.5rem_1fr]">
 
-        <aside class="bg-[#074A82] overflow-y-scroll no-scrollbar grid grid-rows-[10em_1fr]">
+        <aside class="bg-[#074A82] overflow-y-scroll no-scrollbar grid grid-rows-[16em_1fr]">
 
-            <div class="asidecontainer flex flex-col items-center gap-6">
+            <div class="asidecontainer">
 
-                <div class="unsignedstaff text-3xl font-light text-white mt-5">
-                    <h1>Unsigned Staff</h1>
+                <div class="logo flex justify-center">
+                    <img src="Assets/images/logo.png" height="120" width="120" alt="LOGO">
                 </div>
 
-                <div class="addworker-button">
+                <div class="conainer-flex w-full flex flex-col items-center gap-6">
+
+                    <div class="unsignedstaff text-3xl font-light text-white">
+                    <h1>Unsigned Staff</h1>
+                    </div>
+
+                    <div class="addworker-button">
 
                     <button
                         class="bg-[#ffffff75] text-white p-2 w-60 rounded-4xl relative transition transform hover:scale-105 hover:bg-[#ffffff97]"
@@ -34,6 +40,8 @@
                             width="27" alt="add person logo">
                         <p>Add New Worker</p>
                     </button>
+
+                    </div>
 
                 </div>
 
@@ -67,12 +75,9 @@
 
         </aside>
 
-        <main class="grid grid-rows-[7.5em_1fr]">
+        <main class="p-2">
 
-            <div class="logo flex justify-center"><img src="Assets/images/logo.png" height="120" width="120" alt="LOGO">
-            </div>
-
-            <div id="flor" class="grid grid-cols-5 grid-rows-3 w-11/12 h-11/12 mx-auto bg-[#EAA64D]">
+            <div id="flor" class="grid grid-cols-7 grid-rows-3 w-full h-full bg-[#EAA64D]">
 
                 <div id="conference-room" class=" bg-[#D88E32] flex flex-col items-center justify-between col-start-1 col-end-3">
                     
@@ -116,7 +121,7 @@
                     
                 </div>
                 
-                <div id="Server-room" class="text-2xl bg-[#2D7BC4] flex flex-col items-center justify-between col-start-5 col-end-6 row-start-3 row-end-4">
+                <div id="Server-room" class="text-2xl bg-[#2D7BC4] flex flex-col items-center justify-between col-start-6 col-end-8 row-start-3 row-end-4">
 
                     <div class="flor-container">
                         <h2 class="text-2xl">Server Room</h2>
@@ -133,7 +138,7 @@
 
                 </div>
 
-                <div id="Security-room" class="text-2xl bg-[#7C4F1A] flex flex-col items-center justify-between col-start-5 col-end-6 row-start-1 row-end-2">
+                <div id="Security-room" class="text-2xl bg-[#7C4F1A] flex flex-col items-center justify-between col-start-6 col-end-8 row-start-1 row-end-2">
 
                     <div class="flor-container">
                         <h2 class="text-2xl">Security Room</h2>
@@ -150,7 +155,7 @@
 
                 </div>
 
-                <div id="Staff-room" class="text-2xl bg-[#F7F7F7] flex flex-col items-center justify-between col-start-4 col-end-5 row-start-3 row-end-4">
+                <div id="Staff-room" class="text-2xl bg-[#F7F7F7] flex flex-col items-center justify-between col-start-4 col-end-6 row-start-3 row-end-4">
 
                     <div class="flor-container">
                         <h2 class="text-2xl">Staff Room</h2>
@@ -167,7 +172,7 @@
 
                 </div>
 
-                <div id="Archives-room" class="text-2xl bg-[#B37933] flex flex-col items-center justify-between col-start-4 col-end-5 row-start-1 row-end-2">
+                <div id="Archives-room" class="text-2xl bg-[#B37933] flex flex-col items-center justify-between col-start-4 col-end-6 row-start-1 row-end-2">
 
                     <div class="flor-container">
                         <h2 class="text-2xl">Archives Room</h2>
