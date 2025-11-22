@@ -2,6 +2,10 @@ const addworker = document.getElementById("addworker");
 const add_experience = document.getElementById("add-experience");
 const experinces_apended = document.getElementById("appended-container-experience");
 
+const overlay_profile = document.getElementById("profile-overlay");
+const close_profile = document.getElementById("close-profile");
+
+
 const close = document.getElementById("close-button");
 const overlay = document.getElementById("modal-overlay");
 
@@ -256,3 +260,88 @@ function displayWorkers() {
     }
 }
 displayWorkers();
+
+function showdetails(workerId) {
+    let found = workers.find(worker => worker.id === workerId);
+    console.log(overlay_profile);
+
+    overlay_profile.classList.remove("hidden")
+
+    overlay_profile.innerHTML = "";
+
+    overlay_profile.innerHTML = `
+
+<div id="profile-modal" class="bg-[#074A82] w-104 h-[95%] p-5 overflow-y-scroll no-scrollbar flex flex-col gap-10 ">
+
+            <div class="profile&close-button relative">
+                <h3 class="text-2xl text-white">Profile</h3>
+                <i id="close-profile" onClick="closemodalprofile()"
+                    class="fa-solid fa-xmark absolute text-white right-0 top-1 cursor-pointer transition hover:scale-95 hover:text-red-500 text-2xl"></i>
+            </div>
+
+            <div class="profile-container flex items-center gap-6">
+
+                <div class="profile-picture flex items-center justify-center border-gray-400 rounded-full border-2 border-dashed w-20 h-20 overflow-hidden">
+                    <img id="pic-profile" height="80" width="80" src="${found.picture}" alt="profile">
+                </div>
+
+                <div class="name&role">
+
+                    <div id="profile-name" class="text-white text-2xl"><h3>${found.fullname}</h3></div>
+                    <div id="profile-role" class="text-white text-xl"><h4>${found.role}</h4></div>
+
+                </div>
+
+            </div>
+
+            <div class="current-r flex flex-col gap-1">
+                <h3 class="text-xl text-white">Current Room</h3>
+                <h4 id="current-room" class="text-gray-300 text-sm">${found.curruntroom.replace("workers-", "")}</h4>
+            </div>
+
+            <div class="contact-info flex flex-col gap-2">
+
+                <h3 class="text-xl text-white">Contact Info</h3>
+
+                <div class="email flex items-center gap-2">
+                    <i class="fa-regular fa-envelope text-gray-300"></i>
+                    <a id="profile-email" href="mailto:${found.email}" class="text-gray-300 text-sm">${found.email}</a>
+                </div>
+
+                <div class="phone flex items-center gap-2">
+                    <i class="fa-solid fa-phone text-gray-300"></i>
+                    <a id="profile-phone" href="tel:${found.phone}" class="text-gray-300 text-sm">${found.phone}</a>
+                </div>
+                
+            </div>
+
+            <div class="experinces-profile flex flex-col gap-2">
+                ${found.experiences.map(exp =>
+        `<div id="experience-profile" class="flex flex-col gap-3">
+
+                    <h3 class="text-xl text-white">Experience</h3>
+
+                    <h4 class="text-lg text-white">Job</h4>
+                    <h5 id="ex-job" class="text-gray-300 text-sm">${exp.job}</h5>
+
+                    <h4 class="text-lg text-white">Company</h4>
+                    <h5 id="ex-company" class="text-gray-300 text-sm">${exp.company}</h5>
+
+                    <h4 class="text-lg text-white">Date</h4>
+                    <h5 id="ex-date" class="text-gray-300 text-sm">Sartdate:${exp.start_date} Enddate:${exp.end_date}</h5>
+
+                    <h4 class="text-lg text-white">Description</h4>
+                    <textarea id="ex-description" disabled class="text-sm text-gray-300 w-full border px-2 py-1 rounded">${exp.description}</textarea>`).join("")
+
+        }
+                </div>
+
+            </div>
+
+        </div>
+`
+}
+
+function closemodalprofile() {
+    overlay_profile.classList.add("hidden");
+}
