@@ -1,8 +1,15 @@
 const addworker = document.getElementById("addworker");
-const overlay = document.getElementById("modal-overlay");
+const add_experience = document.getElementById("add-experience");
+const experinces_apended = document.getElementById("appended-container-experience");
+
 const close = document.getElementById("close-button");
+const overlay = document.getElementById("modal-overlay");
 
 const modal = document.getElementById("modal");
+
+const preview = document.getElementById("pic-preview");
+const picture = document.getElementById("picture");
+const roles = document.getElementById("roles");
 
 let workers = [];
 
@@ -188,6 +195,25 @@ modal.addEventListener("submit", (e) => {
     modal.reset();
 });
 
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("delete-experience")) {
+        e.target.closest(".expereince-added").remove();
+    }
+});
+
+picture.addEventListener("input", () => {
+    if (picture.value === "") {
+        preview.setAttribute("src", "Assets/images/PICPRE.png");
+    }
+    else {
+        preview.setAttribute("src", picture.value);
+    }
+});
+
+roles.addEventListener("change", () => {
+    document.getElementById("warning").classList.add("hidden");
+});
+
 function displayWorkers() {
     let container = document.getElementById("cards-container")
     container.innerHTML = "";
@@ -229,3 +255,4 @@ function displayWorkers() {
                 </div>`
     }
 }
+displayWorkers();
