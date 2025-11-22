@@ -2,18 +2,21 @@ const addworker = document.getElementById("addworker");
 const add_experience = document.getElementById("add-experience");
 const experinces_apended = document.getElementById("appended-container-experience");
 
+const overlay = document.getElementById("modal-overlay");
+const overlay_inject = document.getElementById("inject-overlay");
 const overlay_profile = document.getElementById("profile-overlay");
-const close_profile = document.getElementById("close-profile");
-
 
 const close = document.getElementById("close-button");
-const overlay = document.getElementById("modal-overlay");
+const close_inject = document.getElementById("close-inject");
+const close_profile = document.getElementById("close-profile");
 
 const modal = document.getElementById("modal");
 
 const preview = document.getElementById("pic-preview");
 const picture = document.getElementById("picture");
 const roles = document.getElementById("roles");
+
+const addBtns = document.querySelectorAll(".add-btn");
 
 let workers = [];
 
@@ -199,12 +202,6 @@ modal.addEventListener("submit", (e) => {
     modal.reset();
 });
 
-document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("delete-experience")) {
-        e.target.closest(".expereince-added").remove();
-    }
-});
-
 picture.addEventListener("input", () => {
     if (picture.value === "") {
         preview.setAttribute("src", "Assets/images/PICPRE.png");
@@ -216,6 +213,25 @@ picture.addEventListener("input", () => {
 
 roles.addEventListener("change", () => {
     document.getElementById("warning").classList.add("hidden");
+});
+
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("delete-experience")) {
+        e.target.closest(".expereince-added").remove();
+    }
+});
+
+close_inject.addEventListener("click", () => {
+    overlay_inject.classList.add("hidden");
+});
+
+addBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        let limit = btn.dataset.limit;
+        let room = btn.dataset.room;
+        let filtred = filterWorkers(room);
+        displayWorkersList(filtred, room, limit);
+    })
 });
 
 function displayWorkers() {
@@ -344,4 +360,27 @@ function showdetails(workerId) {
 
 function closemodalprofile() {
     overlay_profile.classList.add("hidden");
+}
+
+function filterWorkers(room) {
+    let filtred = [];
+    if (room === "workers-conference") {
+        filtred = workers.filter(w => w.curruntroom === "unsigned");
+    }
+    else if (room === "workers-Reception") {
+        filtred = workers.filter(w => (w.role === "receptionist" || w.role === "manager") && w.curruntroom === "unsigned");
+    }
+    else if (room === "workers-Server") {
+        filtred = workers.filter(w => (w.role === "technician" || w.role === "manager" || w.role === "cleaner") && w.curruntroom === "unsigned");
+    }
+    else if (room === "workers-Security") {
+        filtred = workers.filter(w => (w.role === "security" || w.role === "manager" || w.role === "cleaner") && w.curruntroom === "unsigned");
+    }
+    else if (room === "workers-Staff") {
+        filtred = workers.filter(w => w.curruntroom === "unsigned");
+    }
+    else if (room === "workers-Archives") {
+        filtred = workers.filter(w => w.role === "manager" && w.curruntroom === "unsigned");
+    }
+    return filtred;
 }
