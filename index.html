@@ -15,9 +15,9 @@
 
 <body>
 
-    <div class="main-contaniner h-screen w-full grid grid-cols-[22.5rem_1fr]">
+    <div class="main-contaniner h-screen w-full grid grid-cols-[22.5rem_1fr]  max-lg:grid-cols-none">
 
-        <aside class="bg-[#074A82] overflow-y-scroll no-scrollbar grid grid-rows-[16em_1fr]">
+        <aside class="bg-[#074A82] max-lg:order-3 overflow-y-scroll no-scrollbar grid grid-rows-[16em_1fr]">
 
             <div class="asidecontainer">
 
@@ -25,21 +25,21 @@
                     <img src="Assets/images/logo.png" height="120" width="120" alt="LOGO">
                 </div>
 
-                <div class="conainer-flex w-full flex flex-col items-center gap-6">
+                <div class="container-flex w-full flex flex-col items-center gap-6">
 
                     <div class="unsignedstaff text-3xl font-light text-white">
-                    <h1>Unsigned Staff</h1>
+                        <h1>Unsigned Staff</h1>
                     </div>
 
                     <div class="addworker-button">
 
-                    <button
-                        class="bg-[#ffffff75] text-white p-2 w-60 rounded-4xl relative transition transform hover:scale-105 hover:bg-[#ffffff97]"
-                        id="addworker" type="button">
-                        <img class="absolute left-5 bottom-[0.45rem]" src="Assets/icons/Add Administrator.png"
-                            width="27" alt="add person logo">
-                        <p>Add New Worker</p>
-                    </button>
+                        <button
+                            class="bg-[#ffffff75] text-white p-2 w-60 rounded-4xl relative transition transform hover:scale-105 hover:bg-[#ffffff97]"
+                            id="addworker" type="button">
+                            <img class="absolute left-5 bottom-[0.45rem]" src="Assets/icons/Add Administrator.png"
+                                width="27" alt="add person logo">
+                            <p>Add New Worker</p>
+                        </button>
 
                     </div>
 
@@ -47,28 +47,9 @@
 
             </div>
 
-            <div class="cards-container flex flex-col  items-center">
+            <div id="cards-container" class="flex flex-col gap-4  items-center">
 
-                <div
-                    class="card1 w-80 h-16 px-2 flex gap-4 items-center rounded-xl bg-[#ffffff26] border border-white">
 
-                    <div id="profile">
-                        <img src="Assets/images/default.png" width="55" alt="profile">
-                    </div>
-
-                    <div class="name&role">
-
-                        <div id="name" class="text-white">
-                            <h2>FADI INSAF</h2>
-                        </div>
-
-                        <div id="role" class="text-[#ffffff]">
-                            <h3>Manager</h3>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
 
@@ -79,136 +60,122 @@
 
             <div id="flor" class="grid grid-cols-7 grid-rows-3 w-full h-full bg-[#EAA64D]">
 
-                <div id="conference-room" class=" bg-[#D88E32] flex flex-col items-center justify-between col-start-1 col-end-3">
-                    
+                <div id="conference-room"
+                    class="bg-[#D88E32] flex flex-col items-center justify-between col-start-1 col-end-3">
+
                     <div class="flor-container">
-                        <h2 class="text-2xl">Conference Room</h2>
+                        <h2 class="text-2xl max-lg:text-sm">Conference Room</h2>
                     </div>
-                    
+
                     <div id="workers-conference" class="flex justify-evenly flex-wrap gap-1">
 
-                        <div class="testcard relative bg-white p-1 flex gap-2 items-center rounded-md transition hover:[&_.remove-worker]:opacity-100">
-
-                            <div class="remove-worker w-3.5 h-3.5 bg-red-600 flex justify-center items-center rounded-full absolute right-26 cursor-pointer bottom-8 opacity-0">
-                                <i class="fa-solid fa-minus text-[0.65rem] text-white"></i>
-                            </div>
-
-                            <div>
-                                <img id="card-flor-picture" src="Assets/images/PICPRE.png" width="30" alt="">
-                            </div>
-
-                            <div class="flex-container">
-
-                                <p id="card-flor-name" class="text-xs">FADI INSAF</p>
-                                <p id="card-flor-role" class="text-xs">Manager</p>
-
-                            </div>
-
-                        </div>
-                        
 
                     </div>
 
                     <div class="add-container">
 
-                        <button id="conference-add"
-                            class="w-10 h-10 cursor-pointer rounded-full bg-[#0D5EA6] hover:bg-[#0a4b85] transition shadow-lg flex items-center justify-center">
+                        <button data-room="workers-conference" data-limit="3"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-[#0D5EA6] hover:bg-[#0a4b85] transition shadow-lg flex items-center justify-center hover:[&_.workers-conference]:bg-[#fff]">
                             <i class="fa-solid fa-plus text-sm text-white"></i>
-                         </button>
+                        </button>
 
                     </div>
-                    
+
                 </div>
 
-                <div id="reception-room" class="text-2xl bg-[#136EB8] flex flex-col items-center justify-between row-start-2 row-end-4 col-start-1 col-end-3">
-                    
+                <div id="reception-room"
+                    class="bg-[#136EB8] flex flex-col items-center justify-between row-start-2 row-end-4 col-start-1 col-end-3">
+
                     <div class="flor-container">
-                        <h2 class="text-2xl">Reception Room</h2>
+                        <h2 class="text-2xl max-lg:text-sm">Reception Room</h2>
                     </div>
-                    
+
                     <div id="workers-Reception" class="flex justify-evenly flex-wrap gap-1">
 
                     </div>
 
                     <div class="add-container">
 
-                        <button id="reception-add"
-                            class="w-10 h-10 cursor-pointer rounded-full bg-white hover:bg-[#ebebeb] transition shadow-lg flex items-center justify-center">
+                        <button data-room="workers-Reception" data-limit="6"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-white hover:bg-[#ebebeb] transition shadow-lg flex items-center justify-center">
                             <i class="fa-solid fa-plus text-sm text-[#0D5EA6]"></i>
-                         </button>
+                        </button>
 
                     </div>
-                    
+
                 </div>
-                
-                <div id="Server-room" class="text-2xl bg-[#2D7BC4] flex flex-col items-center justify-between col-start-6 col-end-8 row-start-3 row-end-4">
+
+                <div id="Server-room"
+                    class="bg-[#2D7BC4] flex flex-col items-center justify-between col-start-6 col-end-8 row-start-3 row-end-4">
 
                     <div class="flor-container">
-                        <h2 class="text-2xl">Server Room</h2>
+                        <h2 class="text-2xl max-lg:text-sm">Server Room</h2>
                     </div>
 
                     <div id="workers-Server" class="flex justify-evenly flex-wrap gap-1"></div>
 
                     <div class="add-container">
-                        <button id="server-add"
-                            class="w-10 h-10 cursor-pointer rounded-full bg-white hover:bg-[#ebebeb] transition shadow-lg flex items-center justify-center">
+                        <button data-room="workers-Server" data-limit="3"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-white hover:bg-[#ebebeb] transition shadow-lg flex items-center justify-center">
                             <i class="fa-solid fa-plus text-sm text-[#0D5EA6]"></i>
                         </button>
                     </div>
 
                 </div>
 
-                <div id="Security-room" class="text-2xl bg-[#7C4F1A] flex flex-col items-center justify-between col-start-6 col-end-8 row-start-1 row-end-2">
+                <div id="Security-room"
+                    class="bg-[#7C4F1A] flex flex-col items-center justify-between col-start-6 col-end-8 row-start-1 row-end-2">
 
                     <div class="flor-container">
-                        <h2 class="text-2xl">Security Room</h2>
+                        <h2 class="text-2xl max-lg:text-sm">Security Room</h2>
                     </div>
 
                     <div id="workers-Security" class="flex justify-evenly flex-wrap gap-1"></div>
 
                     <div class="add-container">
-                        <button id="security-add"
-                            class="w-10 h-10 cursor-pointer rounded-full bg-[#0D5EA6] hover:bg-[#0a4b85] transition shadow-lg flex items-center justify-center">
+                        <button data-room="workers-Security" data-limit="3"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-[#0D5EA6] hover:bg-[#0a4b85] transition shadow-lg flex items-center justify-center">
                             <i class="fa-solid fa-plus text-sm text-white"></i>
                         </button>
                     </div>
 
                 </div>
 
-                <div id="Staff-room" class="text-2xl bg-[#F7F7F7] flex flex-col items-center justify-between col-start-4 col-end-6 row-start-3 row-end-4">
+                <div id="Staff-room"
+                    class="bg-[#e4e4e4] flex flex-col items-center justify-between col-start-4 col-end-6 row-start-3 row-end-4">
 
                     <div class="flor-container">
-                        <h2 class="text-2xl">Staff Room</h2>
+                        <h2 class="text-2xl max-lg:text-sm">Staff Room</h2>
                     </div>
 
                     <div id="workers-Staff" class="flex justify-evenly flex-wrap gap-1"></div>
 
                     <div class="add-container">
-                        <button id="staff-add"
-                            class="w-10 h-10 cursor-pointer rounded-full bg-[#0D5EA6] hover:bg-[#0a4b85] transition shadow-lg flex items-center justify-center">
+                        <button data-room="workers-Staff" data-limit="3"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-[#0D5EA6] hover:bg-[#0a4b85] transition shadow-lg flex items-center justify-center">
                             <i class="fa-solid fa-plus text-sm text-white"></i>
                         </button>
                     </div>
 
                 </div>
 
-                <div id="Archives-room" class="text-2xl bg-[#B37933] flex flex-col items-center justify-between col-start-4 col-end-6 row-start-1 row-end-2">
+                <div id="Archives-room"
+                    class="bg-[#B37933] flex flex-col items-center justify-between col-start-4 col-end-6 row-start-1 row-end-2">
 
                     <div class="flor-container">
-                        <h2 class="text-2xl">Archives Room</h2>
+                        <h2 class="text-2xl max-lg:text-sm">Archives Room</h2>
                     </div>
 
                     <div id="workers-Archives" class="flex justify-evenly flex-wrap gap-1"></div>
 
                     <div class="add-container">
-                        <button id="archives-add"
-                            class="w-10 h-10 cursor-pointer rounded-full bg-white hover:bg-[#ebebeb] transition shadow-lg flex items-center justify-center">
+                        <button data-room="workers-Archives" data-limit="3"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-white hover:bg-[#ebebeb] transition shadow-lg flex items-center justify-center">
                             <i class="fa-solid fa-plus text-sm text-[#0D5EA6]"></i>
                         </button>
                     </div>
 
                 </div>
-
 
             </div>
 
@@ -216,7 +183,8 @@
 
     </div>
 
-    <div id="modal-overlay" class="hidden h-screen w-screen z-101 bg-[rgba(0,0,0,0.8)] fixed flex justify-center items-center top-0 left-0">
+    <div id="modal-overlay"
+        class="hidden h-screen w-screen z-101 bg-[rgba(0,0,0,0.8)] fixed flex justify-center items-center top-0 left-0">
 
         <form method="post" id="modal" class="bg-white w-104 h-[95%] p-5 overflow-y-scroll no-scrollbar">
 
@@ -232,14 +200,16 @@
                     <input id="full-name" type="text" name="fullname" placeholder="Full Name" required
                         class="w-full border px-3 py-2 rounded">
                 </div>
+                <p id="warning-name" class="hidden text-red-600">Name Invalid !</p>
             </div>
 
             <div class="age-container mb-4">
                 <label for="age">Age</label>
                 <div>
-                    <input id="age" type="number" placeholder="Age" name="age" required
+                    <input id="age" type="number" placeholder="Age" min="0" name="age" required
                         class="w-full border px-3 py-2 rounded">
                 </div>
+                <p id="warning-age" class="hidden text-red-600">Age Must Be Between 18-35</p>
             </div>
 
             <div class="phone-container mb-4">
@@ -248,6 +218,7 @@
                     <input id="phone" type="tel" name="phone" placeholder="+212652403020" required
                         class="w-full border px-3 py-2 rounded">
                 </div>
+                <p id="warning-phone" class="hidden text-red-600">Phone Number Invalid !, Try another Number</p>
             </div>
 
             <div class="email-container mb-4">
@@ -256,12 +227,13 @@
                     <input id="email" type="email" name="email" placeholder="Example@test.com" required
                         class="w-full border px-3 py-2 rounded">
                 </div>
+                <p id="warning-email" class="hidden text-red-600">Email Invalid !, Try another Email</p>
             </div>
 
             <div class="picture-container mb-4">
                 <label for="picture">Picture</label>
                 <div>
-                    <input id="picture" type="url" name="picture" placeholder="Profile URL" required
+                    <input id="picture" type="url" name="picture" placeholder="Profile URL"
                         class="w-full border px-3 py-2 rounded mb-2">
                 </div>
 
@@ -281,21 +253,24 @@
                     <option value="manager">Manager</option>
                     <option value="cleaner">Cleaning Staff</option>
                 </select>
+                <p id="warning" class="hidden text-red-600">Please Fill This Fild !</p>
             </div>
 
             <div class="experience-container mb-4">
 
                 <label class="">Experience</label>
 
-                <div class="apended-container">
+                <div id="appended-container-experience" class="flex flex-col gap-4">
 
                     <div class="experience-entry mb-4 border p-3 rounded">
 
                         <div class="job-name mb-2">
-                            <label for="job">Job Name</label>
-                            <div>
-                                <input id="job" type="text" name="job" placeholder="Job Title" required
-                                    class="w-full border px-2 py-1 rounded">
+                            <div class="flex-container">
+                                <label for="job">Job Name</label>
+                                <div>
+                                    <input id="job" type="text" name="job" placeholder="Job Title" required
+                                        class="job-input w-full border px-2 py-1 rounded">
+                                </div>
                             </div>
                         </div>
 
@@ -303,18 +278,20 @@
                             <label for="company">Company Name</label>
                             <div>
                                 <input id="company" type="text" name="company" placeholder="Company / Organization"
-                                    required class="w-full border px-2 py-1 rounded">
+                                    required class="company-input w-full border px-2 py-1 rounded">
                             </div>
                         </div>
 
                         <div class="start-end-date flex gap-2 mb-2">
                             <div class="start flex-1">
                                 <label for="start-date">Start Date</label>
-                                <input id="start-date" type="date" required class="w-full border px-2 py-1 rounded">
+                                <input id="start-date" type="date" required
+                                    class="start-date-input w-full border px-2 py-1 rounded">
                             </div>
                             <div class="end flex-1">
                                 <label for="end-date">End Date</label>
-                                <input id="end-date" type="date" required class="w-full border px-2 py-1 rounded">
+                                <input id="end-date" type="date" required
+                                    class="end-date-input w-full border px-2 py-1 rounded">
                             </div>
                         </div>
 
@@ -322,7 +299,7 @@
                             <label for="description">Description</label>
                             <div>
                                 <textarea id="description" required placeholder="Description"
-                                    class="w-full border px-2 py-1 rounded"></textarea>
+                                    class="description-input w-full border px-2 py-1 rounded"></textarea>
                             </div>
                         </div>
 
@@ -347,7 +324,8 @@
 
     </div>
 
-    <div id="inject-overlay" class="hidden h-screen w-screen z-100 bg-[rgba(0,0,0,0.8)] fixed flex justify-center items-center top-0 left-0">
+    <div id="inject-overlay"
+        class="hidden h-screen w-screen z-100 bg-[rgba(0,0,0,0.8)] fixed flex justify-center items-center top-0 left-0">
 
         <div id="inject-modal" class="bg-[#074A82] w-104 h-[95%] p-5 overflow-y-scroll no-scrollbar">
 
@@ -357,27 +335,9 @@
                     class="fa-solid fa-xmark absolute text-white right-0 top-1 cursor-pointer transition hover:scale-95 hover:text-red-500 text-2xl"></i>
             </div>
 
-            <div class="cards-container flex flex-col  items-center">
+            <div class="cards-container flex flex-col gap-4  items-center">
 
-                <div class="card1 w-80 h-16 px-2 flex gap-4 items-center rounded-xl bg-[#ffffff1f] border-1 border-white">
 
-                    <div id="profile">
-                        <img src="Assets/images/default.png" width="55" alt="profile">
-                    </div>
-
-                    <div class="name&role">
-
-                        <div id="name" class="text-white">
-                            <h2>FADI INSAF</h2>
-                        </div>
-
-                        <div id="role" class="text-[#ffffff]">
-                            <h3>Manager</h3>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
 
@@ -385,81 +345,11 @@
 
     </div>
 
-    <div id="profile-overlay" class="hidden h-screen w-screen z-99 bg-[rgba(0,0,0,0.8)] fixed flex justify-center items-center top-0 left-0">
-
-        <div id="profile-modal" class="bg-[#074A82] w-104 h-[95%] p-5 overflow-y-scroll no-scrollbar flex flex-col gap-10 ">
-
-            <div class="profile&close-button relative">
-                <h3 class="text-2xl text-white">Profile</h3>
-                <i id="close-profile"
-                    class="fa-solid fa-xmark absolute text-white right-0 top-1 cursor-pointer transition hover:scale-95 hover:text-red-500 text-2xl"></i>
-            </div>
-
-            <div class="profile-container flex items-center gap-6">
-
-                <div class="profile-picture flex items-center justify-center border-gray-400 rounded-full border-2 border-dashed w-20 h-20 overflow-hidden">
-                    <img id="pic-profile" height="80" width="80" src="Assets/images/PICPRE.png" alt="profile">
-                </div>
-
-                <div class="name&role">
-
-                    <div id="profile-name" class="text-white text-2xl"><h3>FADI INSAF</h3></div>
-                    <div id="profile-role" class="text-white text-xl"><h4>Manager</h4></div>
-
-                </div>
-
-            </div>
-
-            <div class="current-r flex flex-col gap-1">
-                <h3 class="text-xl text-white">Current Room</h3>
-                <h4 id="current-room" class="text-gray-300 text-sm">Security Room</h4>
-            </div>
-
-            <div class="contact-info flex flex-col gap-2">
-
-                <h3 class="text-xl text-white">Contact Info</h3>
-
-                <div class="email flex items-center gap-2">
-                    <i class="fa-regular fa-envelope text-gray-300"></i>
-                    <a id="profile-email" href="mailto:fadiinsaf@gmail.com" class="text-gray-300 text-sm">fadiinsaf@gmail.com</a>
-                </div>
-
-                <div class="phone flex items-center gap-2">
-                    <i class="fa-solid fa-phone text-gray-300"></i>
-                    <a id="profile-phone" href="tel:+212657558899" class="text-gray-300 text-sm">+212657558899</a>
-                </div>
-                
-            </div>
-
-            <div class="experinces-profile flex flex-col gap-2">
-
-                <div id="experience-profile" class="flex flex-col gap-2">
-
-                    <h3 class="text-xl text-white">Experience</h3>
-
-                    <h4 class="text-lg text-white">Job</h4>
-                    <h5 id="ex-job" class="text-gray-300 text-sm">Cheff</h5>
-
-                    <h4 class="text-lg text-white">Company</h4>
-                    <h5 id="ex-company" class="text-gray-300 text-sm">Kfc</h5>
-
-                    <h4 class="text-lg text-white">Date</h4>
-                    <h5 id="ex-date" class="text-gray-300 text-sm">2024/2025</h5>
-
-                    <h4 class="text-lg text-white">Description</h4>
-                    <textarea id="ex-description" disabled class="text-sm text-gray-300 w-full border px-2 py-1 rounded">Description</textarea>
-                    
-                </div>
-
-            </div>
-
-        </div>
-
+    <div id="profile-overlay"
+        class="hidden h-screen w-screen z-99 bg-[rgba(0,0,0,0.8)] fixed flex justify-center items-center top-0 left-0">
     </div>
-
     
-
-<script src="Scripts/main.js"></script>
+    <script src="Scripts/main.js"></script>
 </body>
 
 </html>
