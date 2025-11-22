@@ -4,9 +4,344 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Worksphere</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link href="./Styles/output.css" rel="stylesheet">
 </head>
 <body>
+
+    <div class="main-contaniner h-screen w-full grid grid-cols-[22.5rem_1fr]  max-lg:grid-cols-none">
+
+        <aside class="bg-[#074A82] max-lg:order-3 overflow-y-scroll no-scrollbar grid grid-rows-[16em_1fr]">
+
+            <div class="asidecontainer">
+
+                <div class="logo flex justify-center">
+                    <img src="Assets/images/logo.png" height="120" width="120" alt="LOGO">
+                </div>
+
+                <div class="container-flex w-full flex flex-col items-center gap-6">
+
+                    <div class="unsignedstaff text-3xl font-light text-white">
+                        <h1>Unsigned Staff</h1>
+                    </div>
+
+                    <div class="addworker-button">
+
+                        <button
+                            class="bg-[#ffffff75] text-white p-2 w-60 rounded-4xl relative transition transform hover:scale-105 hover:bg-[#ffffff97]"
+                            id="addworker" type="button">
+                            <img class="absolute left-5 bottom-[0.45rem]" src="Assets/icons/Add-Administrator.png"
+                                width="27" alt="add person logo">
+                            Add New Worker
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="cards-container" class="flex flex-col gap-4  items-center">
+
+
+
+            </div>
+
+
+        </aside>
+
+        <main class="p-2">
+
+            <div id="flor" class="grid grid-cols-7 grid-rows-3 w-full h-full bg-[#EAA64D]">
+
+                <div id="conference-room"
+                    class="bg-[#D88E32] flex flex-col items-center justify-between col-start-1 col-end-3">
+
+                    <div class="flor-container">
+                        <h2 class="text-2xl max-lg:text-sm">Conference Room</h2>
+                    </div>
+
+                    <div id="workers-conference" class="flex justify-evenly flex-wrap gap-1">
+
+
+                    </div>
+
+                    <div class="add-container">
+
+                        <button data-room="workers-conference" data-limit="3"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-[#0D5EA6] hover:bg-[#0a4b85] transition shadow-lg flex items-center justify-center hover:[&_.workers-conference]:bg-[#fff]">
+                            <i class="fa-solid fa-plus text-sm text-white"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div id="reception-room"
+                    class="bg-[#136EB8] flex flex-col items-center justify-between row-start-2 row-end-4 col-start-1 col-end-3">
+
+                    <div class="flor-container">
+                        <h2 class="text-2xl max-lg:text-sm">Reception Room</h2>
+                    </div>
+
+                    <div id="workers-Reception" class="flex justify-evenly flex-wrap gap-1">
+
+                    </div>
+
+                    <div class="add-container">
+
+                        <button data-room="workers-Reception" data-limit="6"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-white hover:bg-[#ebebeb] transition shadow-lg flex items-center justify-center">
+                            <i class="fa-solid fa-plus text-sm text-[#0D5EA6]"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div id="Server-room"
+                    class="bg-[#2D7BC4] flex flex-col items-center justify-between col-start-6 col-end-8 row-start-3 row-end-4">
+
+                    <div class="flor-container">
+                        <h2 class="text-2xl max-lg:text-sm">Server Room</h2>
+                    </div>
+
+                    <div id="workers-Server" class="flex justify-evenly flex-wrap gap-1"></div>
+
+                    <div class="add-container">
+                        <button data-room="workers-Server" data-limit="3"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-white hover:bg-[#ebebeb] transition shadow-lg flex items-center justify-center">
+                            <i class="fa-solid fa-plus text-sm text-[#0D5EA6]"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div id="Security-room"
+                    class="bg-[#7C4F1A] flex flex-col items-center justify-between col-start-6 col-end-8 row-start-1 row-end-2">
+
+                    <div class="flor-container">
+                        <h2 class="text-2xl max-lg:text-sm">Security Room</h2>
+                    </div>
+
+                    <div id="workers-Security" class="flex justify-evenly flex-wrap gap-1"></div>
+
+                    <div class="add-container">
+                        <button data-room="workers-Security" data-limit="3"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-[#0D5EA6] hover:bg-[#0a4b85] transition shadow-lg flex items-center justify-center">
+                            <i class="fa-solid fa-plus text-sm text-white"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div id="Staff-room"
+                    class="bg-[#e4e4e4] flex flex-col items-center justify-between col-start-4 col-end-6 row-start-3 row-end-4">
+
+                    <div class="flor-container">
+                        <h2 class="text-2xl max-lg:text-sm">Staff Room</h2>
+                    </div>
+
+                    <div id="workers-Staff" class="flex justify-evenly flex-wrap gap-1"></div>
+
+                    <div class="add-container">
+                        <button data-room="workers-Staff" data-limit="3"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-[#0D5EA6] hover:bg-[#0a4b85] transition shadow-lg flex items-center justify-center">
+                            <i class="fa-solid fa-plus text-sm text-white"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div id="Archives-room"
+                    class="bg-[#B37933] flex flex-col items-center justify-between col-start-4 col-end-6 row-start-1 row-end-2">
+
+                    <div class="flor-container">
+                        <h2 class="text-2xl max-lg:text-sm">Archives Room</h2>
+                    </div>
+
+                    <div id="workers-Archives" class="flex justify-evenly flex-wrap gap-1"></div>
+
+                    <div class="add-container">
+                        <button data-room="workers-Archives" data-limit="3"
+                            class="add-btn w-10 h-10 cursor-pointer rounded-full bg-white hover:bg-[#ebebeb] transition shadow-lg flex items-center justify-center">
+                            <i class="fa-solid fa-plus text-sm text-[#0D5EA6]"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <div id="modal-overlay"
+        class="hidden h-screen w-screen z-101 bg-[rgba(0,0,0,0.8)] fixed flex justify-center items-center top-0 left-0">
+
+        <form method="post" id="modal" class="bg-white w-104 h-[95%] p-5 overflow-y-scroll no-scrollbar">
+
+            <div class="add-worker&close-button relative mb-4">
+                <h3 class="text-2xl">Add worker</h3>
+                <i id="close-button"
+                    class="fa-solid fa-xmark absolute right-0 top-1 cursor-pointer transition hover:scale-95 hover:text-red-500 text-2xl"></i>
+            </div>
+
+            <div class="name-container mb-4">
+                <label for="full-name">Full Name</label>
+                <div>
+                    <input id="full-name" type="text" name="fullname" placeholder="Full Name" required
+                        class="w-full border px-3 py-2 rounded">
+                </div>
+                <p id="warning-name" class="hidden text-red-600">Name Invalid !</p>
+            </div>
+
+            <div class="age-container mb-4">
+                <label for="age">Age</label>
+                <div>
+                    <input id="age" type="number" placeholder="Age" min="0" name="age" required
+                        class="w-full border px-3 py-2 rounded">
+                </div>
+                <p id="warning-age" class="hidden text-red-600">Age Must Be Between 18-35</p>
+            </div>
+
+            <div class="phone-container mb-4">
+                <label for="phone">Phone Number</label>
+                <div>
+                    <input id="phone" type="tel" name="phone" placeholder="+212652403020" required
+                        class="w-full border px-3 py-2 rounded">
+                </div>
+                <p id="warning-phone" class="hidden text-red-600">Phone Number Invalid !, Try another Number</p>
+            </div>
+
+            <div class="email-container mb-4">
+                <label for="email">Email</label>
+                <div>
+                    <input id="email" type="email" name="email" placeholder="Example@test.com" required
+                        class="w-full border px-3 py-2 rounded">
+                </div>
+                <p id="warning-email" class="hidden text-red-600">Email Invalid !, Try another Email</p>
+            </div>
+
+            <div class="picture-container mb-4">
+                <label for="picture">Picture</label>
+                <div>
+                    <input id="picture" type="url" name="picture" placeholder="Profile URL"
+                        class="w-full border px-3 py-2 rounded mb-2">
+                </div>
+
+                <div
+                    class="picture-preview flex items-center justify-center border-gray-400 rounded-full border-2 border-dashed w-20 h-20 overflow-hidden">
+                    <img id="pic-preview" height="80" width="80" src="Assets/images/PICPRE.png" alt="profile">
+                </div>
+
+            </div>
+
+            <div class="roles-container mb-4">
+                <select name="role" id="roles" class="w-full border px-3 py-2 rounded">
+                    <option value="" disabled selected>Role</option>
+                    <option value="receptionist">Receptionist</option>
+                    <option value="technician">IT Technician</option>
+                    <option value="security">Security Agent</option>
+                    <option value="manager">Manager</option>
+                    <option value="cleaner">Cleaning Staff</option>
+                </select>
+                <p id="warning" class="hidden text-red-600">Please Fill This Fild !</p>
+            </div>
+
+            <div class="experience-container mb-4">
+
+                <label class="">Experience</label>
+
+                <div id="appended-container-experience" class="flex flex-col gap-4">
+
+                    <div class="experience-entry mb-4 border p-3 rounded">
+
+                        <div class="job-name mb-2">
+                            <div class="flex-container">
+                                <label for="job">Job Name</label>
+                                <div>
+                                    <input id="job" type="text" name="job" placeholder="Job Title" required
+                                        class="job-input w-full border px-2 py-1 rounded">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="company-name mb-2">
+                            <label for="company">Company Name</label>
+                            <div>
+                                <input id="company" type="text" name="company" placeholder="Company / Organization"
+                                    required class="company-input w-full border px-2 py-1 rounded">
+                            </div>
+                        </div>
+
+                        <div class="start-end-date flex gap-2 mb-2">
+                            <div class="start flex-1">
+                                <label for="start-date">Start Date</label>
+                                <input id="start-date" type="date" required
+                                    class="start-date-input w-full border px-2 py-1 rounded">
+                            </div>
+                            <div class="end flex-1">
+                                <label for="end-date">End Date</label>
+                                <input id="end-date" type="date" required
+                                    class="end-date-input w-full border px-2 py-1 rounded">
+                            </div>
+                        </div>
+
+                        <div class="description-experience mb-2">
+                            <label for="description">Description</label>
+                            <div>
+                                <textarea id="description" required placeholder="Description"
+                                    class="description-input w-full border px-2 py-1 rounded"></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <button id="add-experience" type="button"
+                    class="px-4 py-2 w-full bg-[#0a66b1] text-white rounded-md hover:bg-[#0f5690] cursor-pointer">Add
+                    Experience</button>
+
+            </div>
+
+            <div class="rest-add flex gap-2 justify-start">
+                <input type="submit" value="Add Worker"
+                    class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 cursor-pointer">
+                <input type="reset" value="Reset"
+                    class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400 cursor-pointer">
+            </div>
+
+        </form>
+
+    </div>
+
+    <div id="inject-overlay"
+        class="hidden h-screen w-screen z-100 bg-[rgba(0,0,0,0.8)] fixed flex justify-center items-center top-0 left-0">
+
+        <div id="inject-modal" class="bg-[#074A82] w-104 h-[95%] p-5 overflow-y-scroll no-scrollbar">
+
+            <div class="inject&close-button relative mb-4">
+                <h3 class="text-2xl text-white">Select worker</h3>
+                <i id="close-inject"
+                    class="fa-solid fa-xmark absolute text-white right-0 top-1 cursor-pointer transition hover:scale-95 hover:text-red-500 text-2xl"></i>
+            </div>
+
+            <div class="cards-container flex flex-col gap-4  items-center">
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="profile-overlay"
+        class="hidden h-screen w-screen z-99 bg-[rgba(0,0,0,0.8)] fixed flex justify-center items-center top-0 left-0">
+    </div>
     
 </body>
 </html>
