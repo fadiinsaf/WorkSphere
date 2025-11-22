@@ -384,3 +384,50 @@ function filterWorkers(room) {
     }
     return filtred;
 }
+
+function displayWorkersList(filtred, room, limit) {
+    overlay_inject.classList.remove("hidden");
+    let container = document.querySelector("#inject-modal .cards-container");
+
+    container.innerHTML = "";
+
+    if (filtred.length > 0) {
+        filtred.forEach(worker_now => {
+            let div = document.createElement('div');
+            div.innerHTML = `<div
+                    class="card cursor-pointer w-80 h-16 px-2 flex gap-4 items-center rounded-xl bg-[#ffffff26] border border-white">
+
+                    <div  id="profile" class="w-[55px] h-[55px] rounded-full overflow-hidden">
+                        <img src="${worker_now.picture}" width="55" alt="profile">
+                    </div>
+
+                    <div class="name&role">
+
+                        <div id="name" class="text-white">
+                            <h2>${worker_now.fullname}</h2>
+                        </div>
+
+                        <div id="role" class="text-[#ffffff]">
+                            <h3>${worker_now.role}</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+`;
+            div.addEventListener("click", () => {
+                addToRoom(worker_now, room, limit);
+                overlay_inject.classList.add("hidden");
+            })
+            container.append(div);
+        })
+    }
+    else {
+        container.innerHTML = `<div id="noworker-avalaible" class="flex items-center gap-3 bg-[#ffffffab] border  px-4 py-3 rounded-lg backdrop-blur-sm">
+                        <i class="fas fa-user-times text-white text-xl"></i>
+                        <span class="text-white font-medium">No unsigned worker</span>
+                </div>`
+    }
+
+}
