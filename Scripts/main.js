@@ -2,18 +2,21 @@ const addworker = document.getElementById("addworker");
 const add_experience = document.getElementById("add-experience");
 const experinces_apended = document.getElementById("appended-container-experience");
 
+const overlay = document.getElementById("modal-overlay");
+const overlay_inject = document.getElementById("inject-overlay");
 const overlay_profile = document.getElementById("profile-overlay");
-const close_profile = document.getElementById("close-profile");
-
 
 const close = document.getElementById("close-button");
-const overlay = document.getElementById("modal-overlay");
+const close_inject = document.getElementById("close-inject");
+const close_profile = document.getElementById("close-profile");
 
 const modal = document.getElementById("modal");
 
 const preview = document.getElementById("pic-preview");
 const picture = document.getElementById("picture");
 const roles = document.getElementById("roles");
+
+const addBtns = document.querySelectorAll(".add-btn");
 
 let workers = [];
 
@@ -199,12 +202,6 @@ modal.addEventListener("submit", (e) => {
     modal.reset();
 });
 
-document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("delete-experience")) {
-        e.target.closest(".expereince-added").remove();
-    }
-});
-
 picture.addEventListener("input", () => {
     if (picture.value === "") {
         preview.setAttribute("src", "Assets/images/PICPRE.png");
@@ -218,48 +215,24 @@ roles.addEventListener("change", () => {
     document.getElementById("warning").classList.add("hidden");
 });
 
-function displayWorkers() {
-    let container = document.getElementById("cards-container")
-    container.innerHTML = "";
-
-    let unsignedWorkeres = workers.filter(w => w.curruntroom === "unsigned");
-
-    if (unsignedWorkeres.length > 0) {
-        unsignedWorkeres.forEach(worker_now => {
-            let div = document.createElement('div');
-            div.innerHTML = `<div onClick="showdetails(${worker_now.id})"
-                    class="card cursor-pointer w-80 h-16 px-2 flex gap-4 items-center rounded-xl bg-[#ffffff26] border border-white">
-
-                    <div  id="profile" class="w-[55px] h-[55px] rounded-full overflow-hidden">
-                        <img src="${worker_now.picture}" width="55" alt="profile">
-                    </div>
-
-                    <div class="name&role">
-
-                        <div id="name" class="text-white">
-                            <h2>${worker_now.fullname}</h2>
-                        </div>
-
-                        <div id="role" class="text-[#ffffff]">
-                            <h3>${worker_now.role}</h3>
-                        </div>
-
-                    </div>
-
-                </div>
-
-`;
-            container.append(div);
-        })
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("delete-experience")) {
+        e.target.closest(".expereince-added").remove();
     }
-    else {
-        container.innerHTML = `<div id="noworker-avalaible" class="flex items-center gap-3 bg-[#ffffffab] border  px-4 py-3 rounded-lg backdrop-blur-sm">
-                        <i class="fas fa-user-times text-white text-xl"></i>
-                        <span class="text-white font-medium">No unsigned worker</span>
-                </div>`
-    }
-}
-displayWorkers();
+});
+
+close_inject.addEventListener("click", () => {
+    overlay_inject.classList.add("hidden");
+});
+
+addBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        let limit = btn.dataset.limit;
+        let room = btn.dataset.room;
+        let filtred = filterWorkers(room);
+        displayWorkersList(filtred, room, limit);
+    })
+});
 
 function showdetails(workerId) {
     let found = workers.find(worker => worker.id === workerId);
@@ -344,4 +317,161 @@ function showdetails(workerId) {
 
 function closemodalprofile() {
     overlay_profile.classList.add("hidden");
+}
+
+function displayWorkers() {
+    let container = document.getElementById("cards-container")
+    container.innerHTML = "";
+
+    let unsignedWorkeres = workers.filter(w => w.curruntroom === "unsigned");
+
+    if (unsignedWorkeres.length > 0) {
+        unsignedWorkeres.forEach(worker_now => {
+            let div = document.createElement('div');
+            div.innerHTML = `<div onClick="showdetails(${worker_now.id})"
+                    class="card cursor-pointer w-80 h-16 px-2 flex gap-4 items-center rounded-xl bg-[#ffffff26] border border-white">
+
+                    <div  id="profile" class="w-[55px] h-[55px] rounded-full overflow-hidden">
+                        <img src="${worker_now.picture}" width="55" alt="profile">
+                    </div>
+
+                    <div class="name&role">
+
+                        <div id="name" class="text-white">
+                            <h2>${worker_now.fullname}</h2>
+                        </div>
+
+                        <div id="role" class="text-[#ffffff]">
+                            <h3>${worker_now.role}</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+`;
+            container.append(div);
+        })
+    }
+    else {
+        container.innerHTML = `<div id="noworker-avalaible" class="flex items-center gap-3 bg-[#ffffffab] border  px-4 py-3 rounded-lg backdrop-blur-sm">
+                        <i class="fas fa-user-times text-white text-xl"></i>
+                        <span class="text-white font-medium">No unsigned worker</span>
+                </div>`
+    }
+}
+
+displayWorkers();
+
+function filterWorkers(room) {
+    let filtred = [];
+    if (room === "workers-conference") {
+        filtred = workers.filter(w => w.curruntroom === "unsigned");
+    }
+    else if (room === "workers-Reception") {
+        filtred = workers.filter(w => (w.role === "receptionist" || w.role === "manager") && w.curruntroom === "unsigned");
+    }
+    else if (room === "workers-Server") {
+        filtred = workers.filter(w => (w.role === "technician" || w.role === "manager" || w.role === "cleaner") && w.curruntroom === "unsigned");
+    }
+    else if (room === "workers-Security") {
+        filtred = workers.filter(w => (w.role === "security" || w.role === "manager" || w.role === "cleaner") && w.curruntroom === "unsigned");
+    }
+    else if (room === "workers-Staff") {
+        filtred = workers.filter(w => w.curruntroom === "unsigned");
+    }
+    else if (room === "workers-Archives") {
+        filtred = workers.filter(w => w.role === "manager" && w.curruntroom === "unsigned");
+    }
+    return filtred;
+}
+
+function displayWorkersList(filtred, room, limit) {
+    overlay_inject.classList.remove("hidden");
+    let container = document.querySelector("#inject-modal .cards-container");
+
+    container.innerHTML = "";
+
+    if (filtred.length > 0) {
+        filtred.forEach(worker_now => {
+            let div = document.createElement('div');
+            div.innerHTML = `<div
+                    class="card cursor-pointer w-80 h-16 px-2 flex gap-4 items-center rounded-xl bg-[#ffffff26] border border-white">
+
+                    <div  id="profile" class="w-[55px] h-[55px] rounded-full overflow-hidden">
+                        <img src="${worker_now.picture}" width="55" alt="profile">
+                    </div>
+
+                    <div class="name&role">
+
+                        <div id="name" class="text-white">
+                            <h2>${worker_now.fullname}</h2>
+                        </div>
+
+                        <div id="role" class="text-[#ffffff]">
+                            <h3>${worker_now.role}</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+`;
+            div.addEventListener("click", () => {
+                addToRoom(worker_now, room, limit);
+                overlay_inject.classList.add("hidden");
+            })
+            container.append(div);
+        })
+    }
+    else {
+        container.innerHTML = `<div id="noworker-avalaible" class="flex items-center gap-3 bg-[#ffffffab] border  px-4 py-3 rounded-lg backdrop-blur-sm">
+                        <i class="fas fa-user-times text-white text-xl"></i>
+                        <span class="text-white font-medium">No unsigned worker</span>
+                </div>`
+    }
+
+}
+
+function addToRoom(worker, room, limit) {
+    let container = document.getElementById(room);
+    let count = container.children.length
+    if (count < limit) {
+        let div = document.createElement("div");
+        div.className = "bg-white p-1 flex gap-2 items-center rounded-md transition hover:[&_.remove-worker]:flex"
+        div.innerHTML = `
+                        <div class="remove-worker w-3.5 h-3.5 bg-red-600 justify-center items-center  rounded-full cursor-pointer hidden">
+                                <i class="fa-solid fa-minus text-[0.5rem] text-white"></i>
+                            </div>
+
+                            <div class="w-[30px] h-[30px] rounded-full overflow-hidden">
+                                <img src="${worker.picture}" width="30" alt="profile">
+                            </div>
+
+                            <div class="flex-container">
+
+                                <p class="text-[0.6rem]">${worker.fullname}</p>
+                                <p class="text-[0.5rem]">${worker.role}</p>
+
+                            </div>`
+
+        div.addEventListener("click", () => {
+            showdetails(worker.id);
+        })
+
+        let remove_worker = div.querySelector(".remove-worker")
+        remove_worker.addEventListener("click", (e) => {
+            e.stopPropagation();
+            div.remove();
+            worker.curruntroom = "unsigned";
+            displayWorkers();
+        })
+
+        container.appendChild(div);
+        worker.curruntroom = room;
+        displayWorkers();
+    }
+    else {
+        alert("Room is full!!!");
+    }
 }
