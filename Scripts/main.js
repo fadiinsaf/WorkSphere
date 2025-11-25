@@ -236,7 +236,6 @@ addBtns.forEach(btn => {
 
 function showdetails(workerId) {
     let found = workers.find(worker => worker.id === workerId);
-    console.log(overlay_profile);
 
     overlay_profile.classList.remove("hidden")
 
@@ -464,10 +463,22 @@ function addToRoom(worker, room, limit) {
             e.stopPropagation();
             div.remove();
             worker.curruntroom = "unsigned";
+            if(container.children.length === 0) {
+                container.parentElement.classList.add("bg-red-500");
+            }
+            else{
+                container.parentElement.classList.remove("bg-red-500");
+            }
             displayWorkers();
         })
 
         container.appendChild(div);
+        if(container.children.length === 0) {
+            container.parentElement.classList.add("bg-red-500");
+        }
+        else{
+            container.parentElement.classList.remove("bg-red-500");
+        }
         worker.curruntroom = room;
         displayWorkers();
     }
